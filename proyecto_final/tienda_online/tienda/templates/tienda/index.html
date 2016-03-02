@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Articulos</title>
+	</head>
+	<body>
+		{% if lista_articulos %}
+			<table border="2">
+				<tr>
+					<td>tipo</td>
+					<td>marca</td>
+					<td>modelo</td>
+				</tr>
+				{% for articulo in lista_articulos %}
+					<tr>
+						<td>{{ articulo.tipo }}</td>
+						<td>{{ articulo.marca }}</td>
+						<td>{{ articulo.modelo }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>No hay articulos</p>			
+		{% endif %}
+
+	</body>
+</html>
