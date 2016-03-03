@@ -3,18 +3,37 @@
 		<title>Articulos</title>
 	</head>
 	<body>
+	{% if user.is_authenticated %}
+			<p>Soy {{ user.get_username }}</p>
+		{% endif %}
+		<nav>
+			<ul>
+				{% if user.is_authenticated %}	
+					<li><a href="{% url 'logout'%}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'registro' %}">Registro</a></li>
+					<li><a href="{% url 'login' %}">Login</a></li>
+				{% endif %}
+			</ul>
+		</nav>
 		{% if lista_articulos %}
 			<table border="2">
 				<tr>
 					<td>tipo</td>
 					<td>marca</td>
 					<td>modelo</td>
+					<td>color</td>
+					<td>caracteristicas</td>
+					<td>precio</td>
 				</tr>
 				{% for articulo in lista_articulos %}
 					<tr>
 						<td>{{ articulo.tipo }}</td>
 						<td>{{ articulo.marca }}</td>
 						<td>{{ articulo.modelo }}</td>
+						<td>{{ articulo.color }}</td>
+						<td>{{ articulo.caracteristicas }}</td>
+						<td>{{ articulo.precio }}</td>
 					</tr>
 				{% endfor %}
 			</table>
