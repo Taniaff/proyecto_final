@@ -11,6 +11,8 @@ class articulos(models.Model):
 	caracteristicas = models.CharField(max_length=200)
 	precio = models.CharField(max_length=10)
 	foto = models.ImageField(upload_to='tienda/static/media',null=True)
+	def __str__(self):
+		return '%s' % (self.modelo)
 
 class comentarios(models.Model):
 	comentario = models.CharField(max_length=200)
