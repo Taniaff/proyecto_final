@@ -5,5 +5,6 @@ urlpatterns = [
    url(r'^$', views.indice, name='indice'),
    url(r'^registro$', views.registro, name='registro'),
    url(r'^login$', views.loginpage, name='login'),
-   url(r'^logout$', views.logoutpage, name='logout'),	
+   url(r'^logout$', views.logoutpage, name='logout'),
+   url(r'^tipo/(?P<tipo_nombre>\w+)/$',views.tipo, name='tipo'),	
 ]

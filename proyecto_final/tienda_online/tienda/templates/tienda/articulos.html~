@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>articulos</title>
+	</head>
+	<body>
+		
+		<p>{{ tipo_nombre }}</p>
+	
+		
+	
+			{% for articulos in lista_articulos %}
+				
+				<p>{{ articulos.nombre }}</p>
+				<p>{{ articulos.precio }}</p>
+				
+			
+			{% endfor %}
+
+		
+	</body>
+</html>

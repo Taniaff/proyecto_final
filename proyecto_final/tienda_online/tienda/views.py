@@ -7,8 +7,13 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def indice(request):
-   lista_articulos = articulos.objects.all()
+   lista_articulos = articulos.objects.values('tipo').distinct()
    return render(request, 'tienda/index.html', {'lista_articulos': lista_articulos })
+
+def tipo(request,tipo_nombre):
+	lista_articulos = articulos.objects.filter(tipo=tipo_nombre)
+	return render (request, 'tienda/articulos.html', {'lista_articulos': lista_articulos,'tipo_nombre':tipo_nombre})
+
 
 def registro(request):
 	if request.method == 'POST':
