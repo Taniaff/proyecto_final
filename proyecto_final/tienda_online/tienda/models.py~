@@ -10,6 +10,7 @@ class articulos(models.Model):
 	color = models.CharField(max_length=20)
 	caracteristicas = models.CharField(max_length=200)
 	precio = models.CharField(max_length=10)
+	foto = models.ImageField(upload_to='tienda/static/media',null=True)
 
 class comentarios(models.Model):
 	comentario = models.CharField(max_length=200)

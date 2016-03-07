@@ -10,8 +10,8 @@
 	
 			{% for articulos in lista_articulos %}
 				
-				<p>{{ articulos.nombre }}</p>
-				<p>{{ articulos.precio }}</p>
+				<p>{{ articulos.marca }}</p>
+				<p>{{ articulos.modelo }}</p>
 				
 			
 			{% endfor %}
