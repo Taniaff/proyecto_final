@@ -12,8 +12,8 @@
 		<p>{{articulo.caracteristicas}}</p>
 		<p>{{articulo.precio}}</p>
 
-		{% if lista_comentarios %}
 		<p>Comentarios de los usuarios:</p>
+		{% if lista_comentarios %}
 		{% for comentario in lista_comentarios %}
 		<li>{{ comentario.comentario }}</li>
 		{% endfor %}
