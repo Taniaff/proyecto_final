@@ -16,8 +16,8 @@ class articulos(models.Model):
 
 class comentarios(models.Model):
 	comentario = models.CharField(max_length=200)
-	articulo =  models.ForeignKey(articulos)
-	usuario = models.ForeignKey (User)
+	articulo =  models.ForeignKey(articulos,null=True)
+	usuario = models.ForeignKey (User,null=True)
 
 class pedido(models.Model):
 	fecha_pedido= models.DateField()

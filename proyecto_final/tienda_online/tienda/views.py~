@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404,render
+from tienda.forms import comentariosForm
 
 # Create your views here.
 
@@ -16,8 +17,20 @@ def tipo(request,tipo_nombre):
 	return render (request, 'tienda/articulos.html', {'lista_articulos': lista_articulos,'tipo_nombre':tipo_nombre})
 
 def especificaciones(request, articulo_id):
-	articulo = get_object_or_404(articulos, pk = articulo_id)
-	return render (request, 'tienda/tallas.html', {'articulo':articulo})
+	if request.method == 'POST':
+		form = comentariosForm(request.POST)
+		if form.is_valid():
+			comentario = form.save()
+			comentario.usuario = request.user
+			articulo = get_object_or_404(articulos, pk = articulo_id)
+			comentario.articulos = articulo
+			comentario.save()
+			return HttpResponseRedirect("/especificaciones/"+articulo_id)
+	else:
+		lista_comentarios = comentarios.objects.filter(articulo=articulo_id)
+		form = comentariosForm()
+		articulo = get_object_or_404(articulos, pk = articulo_id)
+		return render (request, 'tienda/especificaciones.html', {'articulo':articulo, 'lista_comentarios':lista_comentarios, 'form':form})
 
 def registro(request):
 	if request.method == 'POST':

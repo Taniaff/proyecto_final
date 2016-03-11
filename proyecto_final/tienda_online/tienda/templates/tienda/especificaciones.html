@@ -11,6 +11,20 @@
 		<p>{{articulo.color}}</p>
 		<p>{{articulo.caracteristicas}}</p>
 		<p>{{articulo.precio}}</p>
+
+		<p>Comentarios de los usuarios:</p>
+		{% if lista_comentarios %}
+		{% for comentario in lista_comentarios %}
+		<li>{{ comentario.comentario }}</li>
+		{% endfor %}
+	{% else %}
+		<p>No hay comentarios</p>			
+	{% endif %}
+
+	<form method="POST"> {% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Guardar</button>
+	</form>	
 	</body>
 
 
