@@ -1,0 +1,23 @@
+<html>
+<head>
+		<title>Precio</title>
+		
+</head>
+	<body>
+	
+		<img src="/{{articulo.foto}}"><br>
+		<select name="talla">
+		<option selected>Talla</option>
+		{% for talla in lista_tallas %}
+		<option>{{ talla.talla }}</option>
+		{% endfor %}
+		</select>
+
+		<select name="color">
+		<option selected>Color</option>
+		{% for talla in lista_tallas %}
+		<option>{{ talla.color }}</option>
+		{% endfor %}
+		</select>
+	</body>
+</html>

@@ -3,6 +3,7 @@ from tienda.models import articulos,comentarios,pedido,linea,usuarios
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404,render
 
 # Create your views here.
 
@@ -14,6 +15,9 @@ def tipo(request,tipo_nombre):
 	lista_articulos = articulos.objects.filter(tipo=tipo_nombre)
 	return render (request, 'tienda/articulos.html', {'lista_articulos': lista_articulos,'tipo_nombre':tipo_nombre})
 
+def especificaciones(request, articulo_id):
+	articulo = get_object_or_404(articulos, pk = articulo_id)
+	return render (request, 'tienda/tallas.html', {'articulo':articulo})
 
 def registro(request):
 	if request.method == 'POST':

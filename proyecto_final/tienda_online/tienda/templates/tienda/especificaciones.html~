@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Especificaciones</title>
+	</head
+
+	<body>
+		
+		<img src="/{{articulo.foto}}">
+		<p>{{articulo.marca}}</p>
+	</body>
+
+
+
+</html>

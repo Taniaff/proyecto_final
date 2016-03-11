@@ -12,7 +12,7 @@
 				
 				<p>{{ articulos.marca }}</p>
 				<p>{{ articulos.modelo }}</p>
-				
+				<img src="/{{articulos.foto}}">
 			{% endfor %}
 
 		
