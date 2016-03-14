@@ -32,6 +32,17 @@ def especificaciones(request, articulo_id):
 		articulo = get_object_or_404(articulos, pk = articulo_id)
 		return render (request, 'tienda/especificaciones.html', {'articulo':articulo, 'lista_comentarios':lista_comentarios, 'form':form})
 
+def addcart(request):
+	if not "cart" in request.session:
+		request.session["cart"] = {}
+	cantidad = request.POST.get('cantidad', '')
+	id_art = request.POST.get('id', '')
+	if id_art in request.session["cart"]:
+		request.session["cart"][id_art]	=request.session["cart"][id_art]+cantidad
+	else:
+		request.session["cart"][id_art]=cantidad
+	return HttpResponseRedirect("/especificaciones/"+id_art)
+
 def registro(request):
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)

@@ -7,5 +7,6 @@ urlpatterns = [
    url(r'^login$', views.loginpage, name='login'),
    url(r'^logout$', views.logoutpage, name='logout'),
    url(r'^tipo/(?P<tipo_nombre>\w+)/$',views.tipo, name='tipo'),
-   url(r'^especificaciones/(?P<articulo_id>\d+)/$',views.especificaciones, name='especificaciones'),	
+   url(r'^especificaciones/(?P<articulo_id>\d+)/$',views.especificaciones, name='especificaciones'),
+   url(r'^addcart$',views.addcart,name='addcart'),
 ]
