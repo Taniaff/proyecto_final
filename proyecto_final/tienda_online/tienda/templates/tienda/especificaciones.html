@@ -38,12 +38,14 @@
 	</form>	
 	Añadir al carrito:
 	<form method="POST" action="/addcart">
-		<input type='hidden' name='csrfmiddlewaretoken' value='gMQhBRxQwyaXke58MIP2NR6h3mryNeiQ' />
+		{% csrf_token %}
 		<input type="hidden" name="id" value="{{articulo.id}}">
 		<input type="text" name="cantidad" value="1">
 		<input type="submit" value="Submit">
 	</form>
-{{ request.session.cart}}
+{{ request.session.cantidad }}
+	
+
 	</body>
 
 

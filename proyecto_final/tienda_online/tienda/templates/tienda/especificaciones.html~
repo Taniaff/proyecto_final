@@ -29,7 +29,7 @@
 		<li>{{ comentario.comentario }}</li>
 		{% endfor %}
 	{% else %}
-		<p>No hay comentarios</p>			
+		<p>No hay comentargMQhBRxQwyaXke58MIP2NR6h3jggNeiQios</p>			
 	{% endif %}
 
 	<form method="POST"> {% csrf_token %}
@@ -38,12 +38,14 @@
 	</form>	
 	Añadir al carrito:
 	<form method="POST" action="/addcart">
-		<input type='hidden' name='csrfmiddlewaretoken' value='gMQhBRxQwyaXke58MIP2NR6h3mryNeiQ' />
+		{% csrf_token %}
 		<input type="hidden" name="id" value="{{articulo.id}}">
 		<input type="text" name="cantidad" value="1">
 		<input type="submit" value="Submit">
 	</form>
-{{ request.session.cart.articulo.id}}
+{{ request.session.cantidad }}
+	
+
 	</body>
 
 

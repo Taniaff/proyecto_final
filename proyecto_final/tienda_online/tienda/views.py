@@ -35,12 +35,16 @@ def especificaciones(request, articulo_id):
 def addcart(request):
 	if not "cart" in request.session:
 		request.session["cart"] = {}
+	if not "cantidad" in request.session:
+		request.session["cantidad"]=0
 	cantidad = request.POST.get('cantidad', '')
 	id_art = request.POST.get('id', '')
 	if id_art in request.session["cart"]:
 		request.session["cart"][id_art]	=request.session["cart"][id_art]+cantidad
+		request.session["cantidad"]=request.session["cantidad"]+int(cantidad)
 	else:
 		request.session["cart"][id_art]=cantidad
+		request.session["cantidad"]=request.session["cantidad"]+int(cantidad)
 	return HttpResponseRedirect("/especificaciones/"+id_art)
 
 def registro(request):
