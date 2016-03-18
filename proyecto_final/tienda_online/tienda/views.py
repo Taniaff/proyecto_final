@@ -47,6 +47,16 @@ def addcart(request):
 		request.session["cantidad"]=request.session["cantidad"]+int(cantidad)
 	return HttpResponseRedirect("/especificaciones/"+id_art)
 
+def carrito(request):
+	carrito = []
+	for key in request.session["cart"]:
+		articulo = get_object_or_404(articulos, pk = key)
+		cantidad = request.session["cart"][key]
+		item = [articulo,cantidad]
+		carrito.append(item)
+		
+	return render (request, 'tienda/carrito.html', {'carrito':carrito})
+
 def registro(request):
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)

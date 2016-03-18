@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>Carrito</title>
+	</head>
+	<body>
+
+		{% for articulo in carrito %}
+			{{ articulo.0.precio }}	
+			{{ articulo.1}}
+		{% endfor %}
+	</body>
+</html>

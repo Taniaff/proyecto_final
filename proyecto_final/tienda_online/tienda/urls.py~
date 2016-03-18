@@ -9,4 +9,5 @@ urlpatterns = [
    url(r'^tipo/(?P<tipo_nombre>\w+)/$',views.tipo, name='tipo'),
    url(r'^especificaciones/(?P<articulo_id>\d+)/$',views.especificaciones, name='especificaciones'),
    url(r'^addcart$',views.addcart,name='addcart'),
+   url(r'^carrito$'),views.carrito,name='carrito'),
 ]

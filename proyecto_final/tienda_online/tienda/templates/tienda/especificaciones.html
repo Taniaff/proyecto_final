@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title>Especificaciones</title>
@@ -15,6 +16,8 @@
 					<li><a href="{% url 'registro' %}">Registro</a></li>
 					<li><a href="{% url 'login' %}">Login</a></li>
 				{% endif %}
+
+<a href="{% url 'carrito' %}"><img src={% static "media\carrito.jpeg"%}></a>	{{ request.session.cantidad }}
 
 		<img src="/{{articulo.foto}}">
 		<p>{{articulo.marca}}</p>
@@ -43,9 +46,7 @@
 		<input type="text" name="cantidad" value="1">
 		<input type="submit" value="Submit">
 	</form>
-{{ request.session.cantidad }}
 	
-
 	</body>
 
 

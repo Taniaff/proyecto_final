@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title>Especificaciones</title>
@@ -16,6 +17,8 @@
 					<li><a href="{% url 'login' %}">Login</a></li>
 				{% endif %}
 
+<a href="{% url 'carrito' %}"><img src={% static "media\carrito.jpeg"%}></a>	{{ request.session.cantidad }}
+
 		<img src="/{{articulo.foto}}">
 		<p>{{articulo.marca}}</p>
 		<p>{{articulo.modelo}}</p>
@@ -29,7 +32,7 @@
 		<li>{{ comentario.comentario }}</li>
 		{% endfor %}
 	{% else %}
-		<p>No hay comentargMQhBRxQwyaXke58MIP2NR6h3jggNeiQios</p>			
+		<p>No hay comentarios</p>			
 	{% endif %}
 
 	<form method="POST"> {% csrf_token %}
@@ -43,9 +46,7 @@
 		<input type="text" name="cantidad" value="1">
 		<input type="submit" value="Submit">
 	</form>
-{{ request.session.cantidad }}
 	
-
 	</body>
 
 
