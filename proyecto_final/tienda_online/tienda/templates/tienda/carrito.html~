@@ -5,8 +5,10 @@
 	<body>
 
 		{% for articulo in carrito %}
-			{{ articulo.0 }}	
-			{{ articulo.1}}
+			<p>{{ articulo.0.modelo }}</p>
+			<p>{{ articulo.0.precio }}€</p>	
+			<p>Cantidad:{{ articulo.1}}</p>
+			<p>Total:{{ articulo.2}}</p>
 		{% endfor %}
 	</body>
 </html>
