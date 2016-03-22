@@ -9,6 +9,7 @@
 			<p>{{ articulo.0.precio }}€</p>	
 			<p>Cantidad:{{ articulo.1}}</p>
 			<p>Total:{{ articulo.2}}€</p>
+			<a href="{% url 'delcart' articulo.0.id %}">Eliminar</a>
 		{% endfor %}
 	</body>
 </html>

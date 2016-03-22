@@ -45,7 +45,6 @@ def addcart(request):
 	else:
 		request.session["cart"][id_art]=cantidad
 		request.session["cantidad"]=int(request.session["cantidad"])+int(cantidad)
-	
 	return HttpResponseRedirect("/especificaciones/"+id_art)
 
 def carrito(request):
@@ -56,7 +55,6 @@ def carrito(request):
 		precio = int(cantidad)*articulo.precio
 		item = [articulo,cantidad,precio]
 		carrito.append(item)
-		
 	return render (request, 'tienda/carrito.html', {'carrito':carrito})
 
 def registro(request):
@@ -86,3 +84,20 @@ def loginpage(request):
 def logoutpage(request):
 	logout(request)
 	return HttpResponseRedirect("/")
+
+
+def delcart(request,articulo_id):
+	cantidad = request.session["cart"][articulo_id]
+	request.session["cantidad"]=int(request.session["cantidad"])-int(cantidad)
+	request.session.modified = True
+	del request.session["cart"][articulo_id]
+	request.session.modified = True
+	
+	return HttpResponseRedirect("/carrito")
+
+
+
+
+
+
+
