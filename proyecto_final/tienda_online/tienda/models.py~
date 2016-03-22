@@ -9,7 +9,7 @@ class articulos(models.Model):
 	modelo = models.CharField(max_length=50)
 	color = models.CharField(max_length=20)
 	caracteristicas = models.CharField(max_length=200)
-	precio = models.CharField(max_length=10)
+	precio = models.IntegerField()
 	foto = models.ImageField(upload_to='tienda/static/media',null=True)
 	def __str__(self):
 		return '%s' % (self.modelo)
@@ -23,7 +23,7 @@ class pedido(models.Model):
 	fecha_pedido= models.DateField()
 	fecha_entrega= models.DateField()
 	direccion_entrega = models.CharField(max_length=50)
-	autor_pedido = models.ForeignKey (User)
+	autor_pedido = models.ForeignKey (User,null=True)
 
 class linea(models.Model):
 	cantidad = models.IntegerField()

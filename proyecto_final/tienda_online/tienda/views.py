@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404,render
-from tienda.forms import comentariosForm
+from tienda.forms import comentariosForm,pedidosForm
 
 # Create your views here.
 
@@ -95,7 +95,26 @@ def delcart(request,articulo_id):
 	
 	return HttpResponseRedirect("/carrito")
 
+def comprar(request):
+	if request.method == "POST":
+		form = pedidosForm(request.POST)
+		if form.is_valid():
+			pedido = form.save()
+			pedido.autor_pedido = request.user
+			pedido.save()
+			for key in request.session["cart"]:
+				articulo = get_object_or_404(articulos, pk = key)
+				l = linea(cod_articulo=articulo,cantidad=request.session["cart"][key],cod_pedido=pedido)
+				l.save()	
+			return HttpResponseRedirect("/pedido/"+str(pedido.id))
+	else:
+		form = pedidosForm()
+	return render(request, 'tienda/pedidos.html', {'form': form})
 
+def pedido(request,pedido_id):
+	pedido_actual = get_object_or_404(pedido, pk = pedido_id)
+	lineas = linea.objects.filter(cod_pedido=pedido_id)
+	return render(request, 'tienda/detalle_pedido.html', {'pedido_actual': pedido_actual,'lineas':lineas})	
 
 
 

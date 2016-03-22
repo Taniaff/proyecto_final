@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>articulos</title>
+	</head>
+	<body>
+		
+		<p>{{ tipo_nombre }}</p>
+	
+		
+	
+			{% for articulos in lista_articulos %}
+				
+				<p>{{ articulos.marca }}</p>
+				<p>{{ articulos.modelo }}</p>
+				<a href="{% url 'especificaciones' articulos.id %}"><img src="/{{articulos.foto}}"></a>
+			{% endfor %}
+
+		
+	</body>
+</html>

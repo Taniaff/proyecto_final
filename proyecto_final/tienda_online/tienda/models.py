@@ -23,7 +23,7 @@ class pedido(models.Model):
 	fecha_pedido= models.DateField()
 	fecha_entrega= models.DateField()
 	direccion_entrega = models.CharField(max_length=50)
-	autor_pedido = models.ForeignKey (User)
+	autor_pedido = models.ForeignKey (User,null=True)
 
 class linea(models.Model):
 	cantidad = models.IntegerField()

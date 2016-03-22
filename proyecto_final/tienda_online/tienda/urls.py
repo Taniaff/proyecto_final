@@ -10,5 +10,7 @@ urlpatterns = [
    url(r'^especificaciones/(?P<articulo_id>\d+)/$',views.especificaciones, name='especificaciones'),
    url(r'^addcart$',views.addcart,name='addcart'),
    url(r'^carrito$',views.carrito,name='carrito'),
-   url(r'^delcart/(?P<articulo_id>\d+)/$',views.delcart,name='delcart'),	
+   url(r'^delcart/(?P<articulo_id>\d+)/$',views.delcart,name='delcart'),
+   url(r'^comprar$',views.comprar,name='comprar'),
+   url(r'^pedido/(?P<pedido_id>\d+)/$',views.pedido,name='pedido'),	
 ]

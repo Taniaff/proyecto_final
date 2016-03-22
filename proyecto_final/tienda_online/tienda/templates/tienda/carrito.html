@@ -11,5 +11,6 @@
 			<p>Total:{{ articulo.2}}€</p>
 			<a href="{% url 'delcart' articulo.0.id %}">Eliminar</a>
 		{% endfor %}
+			<a href="{% url 'comprar' %}">Comprar</a>
 	</body>
 </html>

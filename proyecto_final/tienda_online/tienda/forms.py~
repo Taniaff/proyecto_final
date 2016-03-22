@@ -1,5 +1,5 @@
 from django import forms
-from miapp.models import comentarios
+from tienda.models import comentarios
 
 class comentariosForm(forms.ModelForm):
 
