@@ -99,21 +99,22 @@ def comprar(request):
 	if request.method == "POST":
 		form = pedidosForm(request.POST)
 		if form.is_valid():
-			pedido = form.save()
-			pedido.autor_pedido = request.user
-			pedido.save()
+			pedido_actual = form.save()
+			pedido_actual.autor_pedido = request.user
+			pedido_actual.save()
 			for key in request.session["cart"]:
 				articulo = get_object_or_404(articulos, pk = key)
-				l = linea(cod_articulo=articulo,cantidad=request.session["cart"][key],cod_pedido=pedido)
+				l = linea(cod_articulo=articulo,cantidad=request.session["cart"][key],cod_pedido=pedido_actual)
 				l.save()	
-			return HttpResponseRedirect("/pedido/"+str(pedido.id))
+			return HttpResponseRedirect("/pedido_nuevo/"+str(pedido_actual.id))
 	else:
 		form = pedidosForm()
 	return render(request, 'tienda/pedidos.html', {'form': form})
 
-def pedido(request,pedido_id):
-	pedido_actual = get_object_or_404(pedido, pk = pedido_id)
+def pedido_nuevo(request,pedido_id):
 	lineas = linea.objects.filter(cod_pedido=pedido_id)
+	pedido_actual = get_object_or_404(pedido, pk = pedido_id)
+	
 	return render(request, 'tienda/detalle_pedido.html', {'pedido_actual': pedido_actual,'lineas':lineas})	
 
 
