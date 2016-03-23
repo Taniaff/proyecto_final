@@ -114,8 +114,18 @@ def comprar(request):
 def pedido_nuevo(request,pedido_id):
 	lineas = linea.objects.filter(cod_pedido=pedido_id)
 	pedido_actual = get_object_or_404(pedido, pk = pedido_id)
-	
-	return render(request, 'tienda/detalle_pedido.html', {'pedido_actual': pedido_actual,'lineas':lineas})	
+	carrito = []
+	total=0
+	for linea_actual in lineas:
+		articulo = get_object_or_404(articulos, pk = str(linea_actual.cod_articulo.id))
+		nombre = articulo.modelo
+		precio_unitario = articulo.precio
+		cantidad = linea_actual.cantidad	
+		precio = int(linea_actual.cantidad)*articulo.precio
+		total=total+precio
+		item = [nombre,precio_unitario,cantidad,precio]
+		carrito.append(item)
+	return render(request, 'tienda/detalle_pedido.html', {'pedido_actual': pedido_actual,'carrito':carrito,'total':total,})	
 
 
 
