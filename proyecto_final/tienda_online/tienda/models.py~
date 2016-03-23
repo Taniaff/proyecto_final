@@ -32,9 +32,4 @@ class linea(models.Model):
 	class Meta:
         	unique_together = (('cod_pedido', 'cod_articulo'),)
 
-class usuarios(models.Model):
-	nombre = models.CharField(max_length=20)
-	apellidos = models.CharField(max_length=50)
-	telefono = models.IntegerField()
-	direccion = models.CharField(max_length=50)
-	user = models.OneToOneField(User)
+

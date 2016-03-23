@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from tienda.models import articulos,comentarios,pedido,linea,usuarios
+from tienda.models import articulos,comentarios,pedido,linea
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
@@ -125,6 +125,7 @@ def pedido_nuevo(request,pedido_id):
 		total=total+precio
 		item = [nombre,precio_unitario,cantidad,precio]
 		carrito.append(item)
+		print(carrito)
 	return render(request, 'tienda/detalle_pedido.html', {'pedido_actual': pedido_actual,'carrito':carrito,'total':total,})	
 
 

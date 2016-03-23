@@ -12,7 +12,7 @@
 {% endfor %}
 		<p>Fecha pedido:{{ pedido_actual.fecha_pedido }}</p>
 		<p>Fecha entrega:{{ pedido_actual.fecha_entrega }}</p>
-		<p>Direccion de entrega{{ pedido_actual.direccion_entrega }}</p>
+		<p>Direccion de entrega: {{ pedido_actual.direccion_entrega }}</p>
 		<p>Comprador:{{ pedido_actual.autor_pedido }}</p>
 		
 	</body>

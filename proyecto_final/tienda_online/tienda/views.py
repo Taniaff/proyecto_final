@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from tienda.models import articulos,comentarios,pedido,linea,usuarios
+from tienda.models import articulos,comentarios,pedido,linea
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
